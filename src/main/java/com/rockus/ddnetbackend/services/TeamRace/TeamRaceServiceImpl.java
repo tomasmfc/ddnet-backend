@@ -18,6 +18,8 @@ public class TeamRaceServiceImpl implements TeamRaceService {
 
     @Override
     public List<TeamRaceDto> getTeamRacesForMap() {
+
+        // TODO: Change this to come in the body of the request at the controller
         List<TeamRace> teamRacesForMapList = teamRaceRepository.findTeamRaceByMap("Arctic Frost");
 
         return TeamRaceMapper.toDtoList(teamRacesForMapList);
