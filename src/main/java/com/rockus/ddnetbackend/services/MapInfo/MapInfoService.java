@@ -1,4 +1,4 @@
-package com.rockus.ddnetbackend.services;
+package com.rockus.ddnetbackend.services.MapInfo;
 
 import java.util.List;
 

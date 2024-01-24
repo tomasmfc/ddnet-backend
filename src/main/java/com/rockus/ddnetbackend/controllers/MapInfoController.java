@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rockus.ddnetbackend.model.dtos.MapInfoDto;
-import com.rockus.ddnetbackend.services.MapInfoService;
+import com.rockus.ddnetbackend.services.MapInfo.MapInfoService;
 
 @RestController
 @RequestMapping("/mapinfo")
