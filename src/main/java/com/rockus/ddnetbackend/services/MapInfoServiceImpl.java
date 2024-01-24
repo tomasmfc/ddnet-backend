@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rockus.ddnetbackend.model.MapInfo;
+import com.rockus.ddnetbackend.model.dtos.MapInfoDto;
+import com.rockus.ddnetbackend.model.mappers.MapInfoMapper;
 import com.rockus.ddnetbackend.repositories.MapInfoRepository;
 
 @Service
@@ -15,8 +17,11 @@ public class MapInfoServiceImpl implements MapInfoService {
     private MapInfoRepository mapInfoRepository;
 
     @Override
-    public List<MapInfo> findAllMapsInfo() {
-        return mapInfoRepository.findAll();
+    public List<MapInfoDto> findAllMapsInfo() {
+
+        List<MapInfo> allMapsInfo = mapInfoRepository.findAll();
+
+        return MapInfoMapper.toDtoList(allMapsInfo);
     }
 
 }

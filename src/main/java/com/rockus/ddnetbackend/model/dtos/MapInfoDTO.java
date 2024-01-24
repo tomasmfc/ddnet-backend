@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public class MapInfoDTO {
+public class MapInfoDto {
     private String map;
     private int width;
     private int height;

@@ -19,7 +19,7 @@ public class MapServiceImpl implements MapService {
     public List<MapDto> findAllMaps() {
         List<Map> allMaps = mapRepository.findAll();
 
-        List<MapDto> allMapsDTO = MapMapper.toListDTO(allMaps);
+        List<MapDto> allMapsDTO = MapMapper.toListDto(allMaps);
 
         return allMapsDTO;
     }

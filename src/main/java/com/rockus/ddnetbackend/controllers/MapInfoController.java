@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.rockus.ddnetbackend.model.MapInfo;
+import com.rockus.ddnetbackend.model.dtos.MapInfoDto;
 import com.rockus.ddnetbackend.services.MapInfoService;
 
 @RestController
@@ -19,9 +19,9 @@ public class MapInfoController {
     private MapInfoService mapInfoService;
 
     @GetMapping
-    public ResponseEntity<List<MapInfo>> findAllMapsInfo() {
+    public ResponseEntity<List<MapInfoDto>> findAllMapsInfo() {
 
-        List<MapInfo> allMapsInfo = mapInfoService.findAllMapsInfo();
+        List<MapInfoDto> allMapsInfo = mapInfoService.findAllMapsInfo();
 
         return ResponseEntity.ok().body(allMapsInfo);
     }
