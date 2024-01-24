@@ -18,6 +18,7 @@ public class RaceServiceImpl implements RaceService {
 
     @Override
     public List<RaceDto> getRacesByName() {
+        // TODO: change this to accept the name from the request body at the ctrl
         List<Race> raceList = raceRepository.findRacesByName("Vinex");
 
         if (raceList == null) {
