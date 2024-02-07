@@ -3,6 +3,7 @@ package com.rockus.ddnetbackend.services.Map;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,10 @@ public class MapServiceImpl implements MapService {
     @Autowired
     private MapRepository mapRepository;
 
-    public List<MapDto> findMapsByPage(int pageNumber, int pageSize) {
+    @Value("${maps.page.size}")
+    private int pageSize;
+
+    public List<MapDto> findMapsByPage(int pageNumber) {
 
         Page<Map> allMaps = mapRepository.findAll(PageRequest.of(pageNumber, pageSize));
 
