@@ -3,8 +3,6 @@ package com.rockus.ddnetbackend.model.dtos;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-//comment to update file name
-
 @AllArgsConstructor
 @Getter
 public class MapInfoDto {
