@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.rockus.ddnetbackend.model.Map;
@@ -24,7 +25,7 @@ public class MapServiceImpl implements MapService {
 
     public List<MapDto> findMapsByPage(int pageNumber) {
 
-        Page<Map> allMaps = mapRepository.findAll(PageRequest.of(pageNumber, pageSize));
+        Page<Map> allMaps = mapRepository.findAll(PageRequest.of(pageNumber, pageSize, Sort.by(Sort.Direction.DESC, "timestamp")));
 
         List<MapDto> allMapsDTO = MapMapper.toListDto(allMaps.getContent());
 
