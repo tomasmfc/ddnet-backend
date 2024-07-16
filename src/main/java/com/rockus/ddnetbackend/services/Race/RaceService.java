@@ -5,5 +5,7 @@ import java.util.List;
 import com.rockus.ddnetbackend.model.dtos.RaceDto;
 
 public interface RaceService {
-    List<RaceDto> getRacesByName();
+    List<RaceDto> getRacesByName(String name);
+
+    int getPointsByName(String name);
 }

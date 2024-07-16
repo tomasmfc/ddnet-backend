@@ -17,14 +17,25 @@ public class RaceServiceImpl implements RaceService {
     private RaceRepository raceRepository;
 
     @Override
-    public List<RaceDto> getRacesByName() {
-        // TODO: change this to accept the name from the request body at the ctrl
-        List<Race> raceList = raceRepository.findRacesByName("Vinex");
+    public List<RaceDto> getRacesByName(String name) {
+        List<Race> raceList = raceRepository.findRacesByName(name);
 
         if (raceList == null) {
             return null;
         }
 
         return RaceMapper.toDtoList(raceList);
+    }
+
+    @Override
+    public int getPointsByName(String name) {
+        int pointsByName = raceRepository.getPlayerPoints(name);
+
+        // TODO: improve error handling
+        if (pointsByName < 0) {
+            return -1;
+        }
+
+        return pointsByName;
     }
 }

@@ -8,7 +8,7 @@ import com.rockus.ddnetbackend.model.dtos.RaceDto;
 
 public class RaceMapper {
     public static RaceDto toDto(Race race) {
-        return new RaceDto(race.getMap(), race.getName(), race.getTime(), race.getTimestamp().toString(),
+        return new RaceDto(race.getMap().toString(), race.getName(), race.getTime(), race.getTimestamp().toString(),
                 race.getServer());
     }
 

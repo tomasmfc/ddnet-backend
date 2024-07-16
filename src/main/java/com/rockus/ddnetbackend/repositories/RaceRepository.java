@@ -14,4 +14,9 @@ public interface RaceRepository extends JpaRepository<Race, String> {
 
     @Query("SELECT r FROM Race r WHERE r.name = :name ORDER BY r.timestamp ASC")
     List<Race> findRacesByName(@Param("name") String name);
+
+    // TODO: cache these values somehow
+    // TODO: change this query to jpql or not
+    @Query(value = "SELECT sum(points) AS total_points FROM (select distinct(race.map), name, points from race join maps ON race.map=maps.map where name = :name)", nativeQuery = true)
+    int getPlayerPoints(@Param("name") String name);
 }
