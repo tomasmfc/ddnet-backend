@@ -42,4 +42,26 @@ public class RaceController {
             throw new ResponseStatusException(HttpStatus.CONFLICT, e.getMessage());
         }
     }
+
+    @GetMapping("/latest")
+    public ResponseEntity<List<RaceDto>> getLatestRacesGlobal() {
+        try {
+            List<RaceDto> racesDtos = raceService.getLatestRacesGlobal();
+
+            return ResponseEntity.ok().body(racesDtos);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, e.getMessage());
+        }
+    }
+
+    @GetMapping("/first/{name}")
+    public ResponseEntity<RaceDto> getPlayerFirstFinish(@PathVariable("name") String name) {
+        try {
+            RaceDto raceDto = raceService.getFirstFinishForPlayer(name);
+
+            return ResponseEntity.ok().body(raceDto);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, e.getMessage());
+        }
+    }
 }

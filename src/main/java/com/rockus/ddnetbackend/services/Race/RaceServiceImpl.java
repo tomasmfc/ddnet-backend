@@ -3,6 +3,9 @@ package com.rockus.ddnetbackend.services.Race;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Limit;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.rockus.ddnetbackend.model.Race;
@@ -38,4 +41,23 @@ public class RaceServiceImpl implements RaceService {
 
         return pointsByName;
     }
+
+    @Override
+    public List<RaceDto> getLatestRacesGlobal() {
+        Page<Race> races = raceRepository.findAll(PageRequest.of(0, 20));
+
+        List<RaceDto> racesDtos = RaceMapper.toDtoList(races.getContent());
+
+        return racesDtos;
+    }
+
+    @Override
+    public RaceDto getFirstFinishForPlayer(String name) {
+        Race race = raceRepository.getFirstFinishForPlayer(name, Limit.of(1));
+
+        RaceDto raceDto = RaceMapper.toDto(race);
+
+        return raceDto;
+    }
+
 }
